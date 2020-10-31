@@ -1,16 +1,32 @@
 import pygame
-import character
+from character import Character
 
 running = False
+main_character = None
+
 def update(screen):
     print("Updating")
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                main_character.(
+            if event.key == pygame.K_UP or event.key == pygame.K_w:
+                main_character.y_direction = -1
+            elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                main_character.y_direction = 1
+            elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
+                main_character.x_direction = -1
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+                main_character.x_direction = 1
 
-            elif event.key == pygame.K_LEFT:
-        if event.type == pygame.KEYUP:
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP or event.key == pygame.K_w:
+                main_character.y_direction = 0
+            elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                main_character.y_direction = 0
+            elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
+                main_character.x_direction = 0
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+                main_character.x_direction = 0
+
         if event.type == pygame.QUIT:
             print("Quitting")
             running = False
@@ -34,6 +50,7 @@ def main():
     pygame.init() 
 
     screen = pygame.display.set_mode((500,500))
+    main_character = Character(10, 10, 20, 20, color=(0, 0, 255))
 
     main_loop(screen)
 
