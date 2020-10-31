@@ -5,6 +5,8 @@ running = False
 main_character = None
 
 def update(screen):
+    global running
+    global main_character
     print("Updating")
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
@@ -16,6 +18,8 @@ def update(screen):
                 main_character.x_direction = -1
             elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                 main_character.x_direction = 1
+            elif event.key == pygame.K_ESCAPE:
+                running = False
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_UP or event.key == pygame.K_w:
@@ -38,6 +42,7 @@ def render(screen):
     pygame.display.flip()
 
 def main_loop(screen):
+    global running
     running = True
     while (running):
         update(screen)
@@ -47,6 +52,7 @@ def main_loop(screen):
     pygame.quit()
 
 def main():
+    global main_character
     pygame.init() 
 
     screen = pygame.display.set_mode((500,500))
