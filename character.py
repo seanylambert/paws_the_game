@@ -8,7 +8,7 @@ class Character():
         self.height = height
         self.x_direction = 0
         self.y_direction = 0
-        self.walk_speed = 0.5
+        self.walk_speed = 0.1
         self.color = color
     def move(self):                     #0,0 *right x-increase *down y-increase
         self.x += (self.x_direction * self.walk_speed)
@@ -31,5 +31,5 @@ class Character():
     def update(self):
         self.move()
     def render(self, screen):
-        pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))              #(x,y, width, height) tuple
+        pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))              #(x,y, width, height) == tuple
 
